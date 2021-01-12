@@ -1,0 +1,20 @@
+{
+  "type": "module",
+  "name": "news-provider-api",
+  "version": "1.0.0",
+  "description": "A little example of Express + Knex + Objection with some authentication stuff",
+  "main": "src/app.js",
+  "repository": "git+https://github.com/bernardocs/news-provider-api.git",
+  "author": "Bernardo Santos",
+  "license": "MIT",
+  "scripts": {
+    "start": "NODE_ENV=production node src/app.js",
+    "dev": "NODE_ENV=development nodemon --watch src src/app.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
