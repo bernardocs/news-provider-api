@@ -8,4 +8,16 @@ router.get('/', async (req, res) => {
   res.json(authors);
 })
 
+router.get('/:id', async (req, res) => {
+  const { id } = req.params;
+
+  const author = await Author.query().findById(id);
+
+  if (author) {
+    res.json(author);
+  } else {
+    res.sendStatus(404);
+  }
+})
+
 export default router;
