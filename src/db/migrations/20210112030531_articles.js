@@ -4,11 +4,11 @@ export function up(knex) {
     t.integer('author_id')
       .references('id').inTable('authors')
       .onDelete('cascade');
-    t.string('title');
-    t.string('category');
-    t.string('summary');
-    t.string('firstParagraph');
-    t.text('body');
+    t.string('title').notNullable();
+    t.string('category').notNullable();
+    t.string('summary').notNullable();
+    t.string('firstParagraph').notNullable();
+    t.text('body').notNullable();
   });
 };
 

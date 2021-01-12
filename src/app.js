@@ -4,6 +4,9 @@ import articlesAPI from './api/articles.js';
 
 const app = express();
 
+// Accepts Content-type: application/json
+app.use(express.json());
+
 app.use('/authors', authorsAPI);
 app.use('/articles', articlesAPI);
 

@@ -1,3 +1,4 @@
+import objection from 'objection';
 import express from 'express';
 import authorsDAO from '../db/dao/authors.js';
 
@@ -6,7 +7,7 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   const authors = await authorsDAO.getAuthors();
   res.json(authors);
-})
+});
 
 router.get('/:id', async (req, res) => {
   const { id } = req.params;
@@ -18,6 +19,25 @@ router.get('/:id', async (req, res) => {
   } else {
     res.sendStatus(404);
   }
-})
+});
+
+router.post('/', async (req, res) => {
+  const author = req.body;
+
+  try {
+    await authorsDAO.insertAuthor(author);
+    res.send(201);
+  } catch (err) {
+    if (err instanceof objection.ValidationError) {
+      console.error(err.data);
+      res.status(400).send(err.data);
+    } else if (err instanceof objection.ConstraintViolationError) {
+      console.error(err);
+      res.status(400).send(err.message);
+    } else {
+      res.sendStatus(500);
+    }
+  }
+});
 
 export default router;

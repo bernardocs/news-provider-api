@@ -1,8 +1,8 @@
 export function up(knex) {
   return knex.schema.createTable('authors', t => {
     t.increments('id');
-    t.string('name');
-    t.string('picture', 2084);
+    t.string('name').notNullable();
+    t.string('picture', 2084).notNullable();
   });
 };
 

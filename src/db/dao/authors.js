@@ -8,7 +8,12 @@ export function getAuthorById(id) {
   return Author.query().findById(id);
 }
 
+export function insertAuthor(author) {
+  return Author.query().insert(author);
+}
+
 export default {
   getAuthors,
-  getAuthorById
+  getAuthorById,
+  insertAuthor
 }
