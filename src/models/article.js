@@ -17,7 +17,7 @@ class Article extends Model {
         modelClass: Author,
         join: {
           from: 'articles.author_id',
-          to: 'author.id'
+          to: 'authors.id'
         }
       }
     }
