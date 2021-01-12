@@ -9,10 +9,15 @@
   "license": "MIT",
   "scripts": {
     "start": "NODE_ENV=production node src/app.js",
-    "dev": "NODE_ENV=development nodemon --watch src src/app.js"
+    "dev": "NODE_ENV=development nodemon --watch src src/app.js",
+    "migrate": "NODE_ENV=development knex migrate:latest --esm",
+    "seed": "NODE_ENV=development knex seed:run --esm"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "knex": "^0.21.15",
+    "objection": "^2.2.6",
+    "pg": "^8.5.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"

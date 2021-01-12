@@ -1,10 +1,9 @@
 import express from 'express';
+import authorsAPI from './api/authors.js';
 
 const app = express();
 
-app.get('*', (req, res) => {
-  res.send('Hello World!');
-});
+app.use('/authors', authorsAPI);
 
 const port = process.env.PORT || '3000';
 
