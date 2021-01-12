@@ -10,6 +10,14 @@ class Article extends Model {
     return 'articles';
   }
 
+  $formatJson(json) {
+    json = super.$formatJson(json);
+
+    delete json.author_id;
+
+    return json;
+  }
+
   static get relationMappings() {
     return {
       author: {
