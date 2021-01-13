@@ -26,17 +26,19 @@ router.post('/', async (req, res) => {
 
   try {
     await authorsDAO.insertAuthor(author);
-    res.send(201);
+    return res.send(201);
   } catch (err) {
     if (err instanceof objection.ValidationError) {
       console.error(err.data);
-      res.status(400).send(err.data);
-    } else if (err instanceof objection.ConstraintViolationError) {
-      console.error(err);
-      res.status(400).send(err.message);
-    } else {
-      res.sendStatus(500);
+      return res.status(400).send(err.data);
     }
+
+    if (err instanceof objection.ConstraintViolationError) {
+      console.error(err);
+      return res.status(400).send(err.message);
+    }
+
+    return res.sendStatus(500);
   }
 });
 
