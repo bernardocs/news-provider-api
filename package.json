@@ -14,9 +14,14 @@
     "seed": "NODE_ENV=development knex seed:run --esm"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "jsonwebtoken": "^8.5.1",
     "knex": "^0.21.15",
     "objection": "^2.2.6",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
     "pg": "^8.5.1"
   },
   "devDependencies": {
