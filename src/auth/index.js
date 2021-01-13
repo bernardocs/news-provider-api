@@ -42,35 +42,43 @@ passport.deserializeUser((id, cb) => {
   });
 });
 
-export default {
-  initialize() {
-    return passport.initialize();
-  },
-  session() {
-    return passport.session();
-  },
-  authenticate(...params) {
-    return passport.authenticate(...params);
-  },
-  async loginMiddleware(req, res, next) {
-    const { username, password } = req.body;
+export function initialize() {
+  return passport.initialize();
+}
 
-    if (!username || !password) {
-      return res.status(400).send('Required fields `username` and `password` must be provided.');
-    }
+export function session() {
+  return passport.session();
+}
 
-    try {
-      const user = await usersDAO.getUserByUsername(username);
+export function authenticate(...params) {
+  return passport.authenticate(...params);
+}
 
-      if (!hash.compare(password, user.hash)) {
-        return res.sendStatus(401);
-      }
+export async function loginMiddleware(req, res, next) {
+  const { username, password } = req.body;
 
-      const token = jwt.sign({ id: user.id }, jwtSecret, { expiresIn: '6h' });
-
-      res.json({ token: token });
-    } catch (err) {
-      res.sendStatus(500);
-    }
+  if (!username || !password) {
+    return res.status(400).send('Required fields `username` and `password` must be provided.');
   }
+
+  try {
+    const user = await usersDAO.getUserByUsername(username);
+
+    if (!hash.compare(password, user.hash)) {
+      return res.sendStatus(401);
+    }
+
+    const token = jwt.sign({ id: user.id }, jwtSecret, { expiresIn: '6h' });
+
+    res.json({ token: token });
+  } catch (err) {
+    res.sendStatus(500);
+  }
+}
+
+export default {
+  initialize,
+  session,
+  authenticate,
+  loginMiddleware
 };

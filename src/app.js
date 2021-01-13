@@ -21,10 +21,8 @@ app.use(session({
 app.use(auth.initialize());
 app.use(auth.session());
 
-
-app.use('/', publicAPI);
-app.post('/login', auth.loginMiddleware);
-app.use('/admin', auth.authenticate('jwt'), adminAPI);
+app.use('/api/', publicAPI);
+app.use('/api/admin', auth.authenticate('jwt'), adminAPI);
 
 const port = process.env.PORT || '3000';
 
