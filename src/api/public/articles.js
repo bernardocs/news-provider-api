@@ -17,7 +17,13 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   const { id } = req.params;
 
-  const article = await articlesDAO.getArticleById(id, { fields: ['category', 'title', 'summary', 'firstParagraph'] });
+  const fields = ['category', 'title', 'summary', 'firstParagraph'];
+
+  if (req.isAuthenticated()) {
+    fields.push('body');
+  }
+
+  const article = await articlesDAO.getArticleById(id, { fields });
 
   if (article) {
     res.json(article);
