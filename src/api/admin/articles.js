@@ -1,5 +1,5 @@
 import express from 'express';
-import articlesDAO from '../db/dao/articles.js';
+import articlesDAO from '../../db/dao/articles.js';
 
 const router = express.Router();
 

@@ -1,6 +1,6 @@
 import objection from 'objection';
 import express from 'express';
-import authorsDAO from '../db/dao/authors.js';
+import authorsDAO from '../../db/dao/authors.js';
 
 const router = express.Router();
 

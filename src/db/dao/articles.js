@@ -1,11 +1,18 @@
 import Article from '../../models/article.js';
 
-export function getArticles() {
-  return Article.query().withGraphFetched('author');
+export function getArticles({ fields = [] } = {}) {
+  return Article
+    .query()
+    .select(...fields)
+    .withGraphFetched('author');
 }
 
-export function getArticleById(id) {
-  return Article.query().findById(id).withGraphFetched('author');
+export function getArticleById(id, { fields = [] } = {}) {
+  return Article
+    .query()
+    .select(...fields)
+    .findById(id)
+    .withGraphFetched('author');
 }
 
 export function insertArticle(article) {
