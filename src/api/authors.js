@@ -40,4 +40,16 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.delete('/:id', async (req, res) => {
+  const { id } = req.params;
+
+  const deletedCount = await authorsDAO.deleteAuthorById(id);
+
+  if (deletedCount) {
+    res.sendStatus(200);
+  } else {
+    res.sendStatus(404);
+  }
+});
+
 export default router;

@@ -12,8 +12,13 @@ export function insertArticle(article) {
   return Article.query().insert(article);
 }
 
+export function deleteArticleById(id) {
+  return Article.query().deleteById(id);
+}
+
 export default {
   getArticles,
   getArticleById,
-  insertArticle
+  insertArticle,
+  deleteArticleById
 };

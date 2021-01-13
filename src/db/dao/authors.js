@@ -12,8 +12,13 @@ export function insertAuthor(author) {
   return Author.query().insert(author);
 }
 
+export function deleteAuthorById(id) {
+  return Author.query().deleteById(id);
+}
+
 export default {
   getAuthors,
   getAuthorById,
-  insertAuthor
+  insertAuthor,
+  deleteAuthorById
 }
