@@ -1,8 +1,13 @@
 import Article from '../../models/article.js';
 
-export function getArticles({ fields = [] } = {}) {
+export function getArticles({ fields = [], category } = {}) {
   return Article
     .query()
+    .where(qb => {
+      if (category) {
+        qb.where({ category });
+      }
+    })
     .select(...fields)
     .withGraphFetched('author');
 }
