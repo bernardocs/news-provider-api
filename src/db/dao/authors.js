@@ -1,4 +1,4 @@
-import Author from '../../models/author.js';
+import Author from '../models/author.js';
 
 export function getAuthors() {
   return Author.query();

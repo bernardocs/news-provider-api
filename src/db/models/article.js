@@ -1,7 +1,7 @@
 import { Model } from 'objection';
 import Author from './author.js';
 
-import knex from '../db/knex.js';
+import knex from '../knex.js';
 
 Model.knex(knex);
 

@@ -1,4 +1,4 @@
-import Article from '../../models/article.js';
+import Article from '../models/article.js';
 
 export function getArticles({ fields = [], category } = {}) {
   return Article
