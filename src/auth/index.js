@@ -6,10 +6,8 @@ import hash from './hash.js';
 
 import usersDAO from '../db/dao/users.js';
 
-const jwtSecret = 'voulez-vous un secret?';
-
 const params = {
-  secretOrKey: jwtSecret,
+  secretOrKey: process.env.JWT_SECRET,
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken()
 };
 
@@ -68,7 +66,7 @@ export async function loginMiddleware(req, res, next) {
       return res.sendStatus(401);
     }
 
-    const token = jwt.sign({ id: user.id }, jwtSecret, { expiresIn: '6h' });
+    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '6h' });
 
     res.json({ token: token });
   } catch (err) {
