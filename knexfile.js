@@ -9,7 +9,7 @@ export default {
   development: {
     client: 'pg',
     connection: {
-      host: 'localhost',
+      host: 'db',
       user: 'postgres',
       password: 'secret',
       database: 'development_db',

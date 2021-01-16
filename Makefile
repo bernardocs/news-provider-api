@@ -1,11 +1,7 @@
 SHELL := /bin/bash
 
-.PHONY: setup-db
-setup-db:
-	knex migrate:latest --esm
-	knex seed:run --esm
-
-.PHONY: redo-setup-db
-redo-setup-db:
-	knex migrate:rollback --esm
-	$(MAKE) setup-db
+.PHONY: setup
+setup:
+	docker-compose up -d
+	docker-compose exec api wait-for-it db:5432 -- bash -c "knex migrate:latest --esm && knex seed:run --esm"
+	docker-compose down
