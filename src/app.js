@@ -1,4 +1,3 @@
-import dotenv from 'dotenv';
 import express from 'express';
 import session from 'express-session';
 
@@ -6,8 +5,6 @@ import auth from './auth/index.js';
 
 import publicAPI from './api/public/index.js';
 import adminAPI from './api/admin/index.js';
-
-dotenv.config();
 
 const app = express();
 

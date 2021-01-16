@@ -9,9 +9,7 @@
   "license": "MIT",
   "scripts": {
     "start": "NODE_ENV=production node src/app.js",
-    "dev": "NODE_ENV=development nodemon --watch src src/app.js",
-    "migrate": "NODE_ENV=development knex migrate:latest --esm",
-    "seed": "NODE_ENV=development knex seed:run --esm"
+    "dev": "NODE_ENV=development nodemon -r dotenv/config --watch src src/app.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
