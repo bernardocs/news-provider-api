@@ -70,6 +70,7 @@ export async function loginMiddleware(req, res, next) {
 
     res.json({ token: token });
   } catch (err) {
+    console.error(err);
     res.sendStatus(500);
   }
 }
