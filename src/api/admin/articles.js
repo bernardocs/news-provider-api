@@ -1,3 +1,4 @@
+import objection from 'objection';
 import express from 'express';
 import articlesDAO from '../../db/dao/articles.js';
 
